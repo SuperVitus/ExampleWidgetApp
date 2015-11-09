@@ -1,0 +1,37 @@
+{
+  "resources": {
+    "head": [
+      {
+        "type": "script",
+        "src": "./app.js"
+      },
+      {
+        "type": "style",
+        "src": "./app.css"
+      }
+    ]
+  },
+  "preview": {
+    "handlers": [
+      {
+        "options": ["*"],
+        "execute": "EagerExampleWidget.setOptions(INSTALL_OPTIONS)"
+      }
+    ]
+  },
+  "options": {
+    "properties": {
+      "element": {
+        "title": "Location",
+        "description": "Where would you like the view counter to appear?",
+        "order": 1,
+        "type": "object",
+        "format": "element",
+        "default": {
+          "selector": "body",
+          "method": "append"
+        }
+      }
+    }
+  }
+}

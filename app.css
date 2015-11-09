@@ -1,0 +1,14 @@
+.example-widget-view-count {
+  display: block;
+  text-indent: 0;
+}
+
+.example-widget-view-count div {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #EEE;
+  color: #000;
+  width: 8em;
+  padding: 10px;
+}
