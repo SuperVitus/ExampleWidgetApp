@@ -22,26 +22,12 @@
   localStorage.fakeViewCount = viewCount;
 
   var el = null;
-  var prevEl = null;
-
   var updateElement = function(){
-    // We keep track of the last element to allow us to restore the removed element
+    // We pass in the last element to allow us to restore the removed element
     // when we do live updating of the preview.  Details:
     // https://eager.io/developer/docs/install-json/preview#dealing-with-element-fields
-    if (el && el.parentNode){
-      if (prevEl){
-        el.parentNode.replaceChild(prevEl, el);
-        prevEl = null;
-      } else {
-        el.parentNode.removeChild(el);
-      }
-    } else {
-      if (options.element.method == 'replace')
-        prevEl = document.querySelector(options.element.selector);
-
-      el = Eager.createElement(options.element);
-      el.className = 'example-widget-view-count';
-    }
+    el = Eager.createElement(options.element, el);
+    el.className = 'example-widget-view-count';
   };
 
   var update = function(){
@@ -65,7 +51,7 @@
 
   // This is used by the preview to enable live updating of the app while previewing.
   // See the preview.handlers section of the install.json file to see where it's used.
-  window.EagerExampleWidget = {
+  INSTALL_SCOPE = {
     setOptions: setOptions
   };
 
